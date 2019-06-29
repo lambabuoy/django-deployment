@@ -1,0 +1,24 @@
+{% extends 'basic_app/basic_app_base.html' %}
+
+{% block body_block %}
+
+    <div class="jumbotron">
+        <h2>{{ movie_detail.title }}</h2>
+        <img src="{{ movie_detail.covers }}" alt="" width="250" height="300" style="padding: 20px;">
+        <p><b>Plot: </b>{{movie_detail.plot }}</p>
+        <p><b>Director: </b> {{movie_detail.director }}</p>
+        <p><b>Length: </b> {{movie_detail.length }}</p>
+        <p><b>Year: </b> {{movie_detail.released_year }}</p>
+        <h5>Stars:</h5>
+
+        {% for actor in movie_detail.actors.all %}
+         <p>{{ actor.name }}</p>
+        {% endfor %}
+    </div>
+
+<div class="container">
+    <p><a class='btn btn-warning' href="{% url 'basic_app:update' pk=movie_detail.pk %}">Update</a></p>
+</div>
+
+
+{% endblock %}
